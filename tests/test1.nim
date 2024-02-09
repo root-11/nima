@@ -10,12 +10,12 @@ import unittest
 import nima
 
 test "can create message":
-  var msg: Message = (sender:1, receiver:2, topic:"hello")
+  var msg = newMessage(sender=1, receiver=2, topic="hello")
   check msg.sender == 1
   check msg.receiver == 2
   check msg.topic == "hello"
-  msg_copy = msg.copy()
-  
+  var msg2 = msg.copy()
+  check msg == msg2
 
 test "can create agent":
   var agent = newAgent()
@@ -27,3 +27,4 @@ test "minimal system":
   s.add(agent)
   s.run()
   check s.t == 1
+

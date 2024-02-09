@@ -3,10 +3,16 @@
 # but you can remove it if you wish.
 
 type
-  Sender = int
-  Receiver = int
-  Topic = string
-  Message* = tuple[sender:Sender, receiver:Receiver, topic:Topic]
+  Message* = object
+    sender*: int
+    receiver*: int
+    topic*: string
+
+
+proc newMessage*(sender,receiver:int, topic:string): Message = 
+  result.sender = sender
+  result.receiver = receiver
+  result.topic = topic
 
 
 proc copy*(self: Message): Message = 
